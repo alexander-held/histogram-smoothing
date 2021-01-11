@@ -70,15 +70,6 @@ void SmoothArray(int nbins, double *xx)
 
       }
 
-      std::cout << "end of median step" << std::endl;
-      std::cout << "zz: ";
-      for (auto i: zz) std::cout << i << " ";
-      std::cout << std::endl;
-      std::cout << "hh: ";
-      for (auto i: hh) std::cout << i << " ";
-      std::cout << std::endl;
-      return;
-
       std::copy ( zz.begin(), zz.end(), yy.begin() );
 
       // quadratic interpolation for flat segments
@@ -129,14 +120,15 @@ void smooth(){
    // double hist[nbins] = {10, 12, 16, 13, 16};
 
    const int nbins = 16;
-   double hist[nbins] = {7.82272339, 20.79126453, 55.58607231, 80.9790969 , 61.72924992,
-       48.02962419, 55.53139849, 38.1122083 , 37.5203016 , 24.89442078,
-       33.42130301, 34.15961964, 11.99455817, 90.5479646 , 18.71481196,
-       88.95821081};
-
+   double hist[nbins] = { 7.82272339, 20.79126453, 55.58607231, 80.9790969,
+                         61.72924992, 48.02962419, 55.53139849, 38.1122083,
+                         37.5203016 , 24.89442078, 33.42130301, 34.15961964,
+                         11.99455817, 90.5479646 , 18.71481196, 88.95821081};
    double *xx = hist;
-   std::cout<<xx<<std::endl;
 
+   std::cout << "original array:" << std::endl;
    print_results(nbins, xx);
    SmoothArray(nbins, xx);
+   std::cout << "\nsmooth array:" << std::endl;
+   print_results(nbins, xx);
 }
