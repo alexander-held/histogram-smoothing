@@ -1,9 +1,11 @@
 #include "TMath.h"
 
 void print_results(int nbins, double *xx) {
+   printf("ref = [");
    for (int i=0; i<nbins; i++) {
-         std::cout << xx[i] << "   ";
+      printf("%f, ",xx[i]);
       }
+   printf("]");
    std::cout << std::endl;
 }
 
@@ -116,19 +118,15 @@ void SmoothArray(int nbins, double *xx)
 }
 
 void smooth(){
-   // const int nbins = 5;
-   // double hist[nbins] = {10, 12, 16, 13, 16};
-
    const int nbins = 16;
    double hist[nbins] = { 7.82272339, 20.79126453, 55.58607231, 80.9790969,
                          61.72924992, 48.02962419, 55.53139849, 38.1122083,
                          37.5203016 , 24.89442078, 33.42130301, 34.15961964,
                          11.99455817, 90.5479646 , 18.71481196, 88.95821081};
-   double *xx = hist;
 
    std::cout << "original array:" << std::endl;
-   print_results(nbins, xx);
-   SmoothArray(nbins, xx);
+   print_results(nbins, hist);
+   SmoothArray(nbins, hist);
    std::cout << "\nsmooth array:" << std::endl;
-   print_results(nbins, xx);
+   print_results(nbins, hist);
 }
